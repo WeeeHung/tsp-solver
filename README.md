@@ -158,23 +158,6 @@ Use these codes for better geocoding accuracy:
 
 Full list: [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
 
-## API Costs
-
-With caching (per run):
-
-| Locations    | First Run | Cached Run |
-| ------------ | --------- | ---------- |
-| 5 locations  | ~$0.15    | $0.00      |
-| 10 locations | ~$0.50    | $0.00      |
-| 20 locations | ~$2.00    | $0.00      |
-
-- Geocoding: $5 per 1,000 requests
-- Distance Matrix: $5 per 1,000 requests
-- Directions: $5 per 1,000 requests
-- Free tier: $200 credit/month
-
-**Caching saves 99% of costs after first run!**
-
 ## Troubleshooting
 
 ### "API key not found"
