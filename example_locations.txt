@@ -1,0 +1,13 @@
+# Example locations file for TSP solver
+# Lines starting with # are comments and will be ignored
+# Enter one location per line
+
+Marina Bay Sands, Singapore
+Gardens by the Bay, Singapore
+Singapore Flyer
+Merlion Park, Singapore
+Raffles Hotel, Singapore
+Orchard Road, Singapore
+Chinatown, Singapore
+Sentosa Island, Singapore
+

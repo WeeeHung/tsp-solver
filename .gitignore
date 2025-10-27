@@ -1,0 +1,65 @@
+# Python compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# Environment variables (API keys, secrets)
+.env
+.env.local
+.env.*.local
+
+# Build and distribution
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Cache files (Google Maps API responses)
+data/distance_cache.json
+data/geocode_cache.json
+data/custom_locations.json
+*.cache
+
+# Output files
+visualization/output/*.html
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Output files (optional - uncomment if you don't want to track outputs)
+visualization/output/*.json
+visualization/output/*.txt
+
