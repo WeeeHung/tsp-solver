@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Simple TSP solver that reads locations from a text file.
+TSP solver that reads locations from a text file and compares multiple solvers.
 
 Usage:
     python solve_tsp.py locations.txt [region]
@@ -11,8 +11,8 @@ Example:
 
 import sys
 from typing import List
-from solvers.ortools_solver import ORToolsSolver
 from runner.solver_runner import SolverRunner
+from solvers.nearest_neighbor import NearestNeighborSolver
 
 
 def read_locations_from_file(filename: str) -> List[str]:
@@ -76,27 +76,50 @@ def main():
         instance_name=instance_name
     )
     
-    # Solve with optimized solver
-    print(f"\n🔧 Solving TSP with OR-Tools...")
-    solver = ORToolsSolver("local_search")
-    result = runner.run_solver_on_instance(solver, instance)
+    # Get all available solvers
+    print(f"\n🔧 Comparing TSP Solvers...")
+    solvers = runner.get_all_solvers()
     
-    # Print results
+    # Run all solvers and collect results
+    results = []
+    for solver in solvers:
+        print(f"\n  Running {solver.name}...")
+        result = runner.run_solver_on_instance(solver, instance)
+        results.append(result)
+        print(f"    Distance: {result['total_distance']:.2f} km")
+        print(f"    Time: {result['solve_time']:.4f} seconds")
+    
+    # Print comparison
     print(f"\n{'='*70}")
-    print(f"✅ SOLUTION")
+    print(f"📊 SOLVER COMPARISON")
     print(f"{'='*70}")
-    print(f"Total Distance: {result['total_distance']:.2f} km")
-    print(f"Solve Time: {result['solve_time']:.4f} seconds")
+    
+    # Sort by distance (best first)
+    results_sorted = sorted(results, key=lambda x: x['total_distance'])
+    
+    print(f"\n{'Rank':<6} {'Solver':<25} {'Distance (km)':<15} {'Time (s)':<12}")
+    print(f"{'-'*70}")
+    
+    for rank, result in enumerate(results_sorted, 1):
+        print(f"{rank:<6} {result['solver_name']:<25} {result['total_distance']:<15.2f} {result['solve_time']:<12.4f}")
+    
+    # Show the best route
+    best_result = results_sorted[0]
+    print(f"\n{'='*70}")
+    print(f"✅ BEST SOLUTION: {best_result['solver_name']}")
+    print(f"{'='*70}")
+    print(f"Total Distance: {best_result['total_distance']:.2f} km")
+    print(f"Solve Time: {best_result['solve_time']:.4f} seconds")
     
     print(f"\n{'='*70}")
-    print(f"🗺️  ROUTE")
+    print(f"🗺️  OPTIMAL ROUTE")
     print(f"{'='*70}")
     
-    if 'route_locations' in result:
-        for i, loc in enumerate(result['route_locations'], 1):
+    if 'route_locations' in best_result:
+        for i, loc in enumerate(best_result['route_locations'], 1):
             if i == 1:
                 print(f"START: {loc['name']}")
-            elif i == len(result['route_locations']):
+            elif i == len(best_result['route_locations']):
                 print(f"END:   {loc['name']} (back to start)")
             else:
                 print(f"  {i}.   {loc['name']}")
@@ -110,8 +133,8 @@ def main():
     print(f"✓ Cached locations: data/custom_locations.json")
     print()
     
-    # Generate visualizations (without HTML)
-    runner.visualize_results([result])
+    # Generate visualizations for all results
+    runner.visualize_results(results)
 
 
 if __name__ == "__main__":

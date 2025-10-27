@@ -7,7 +7,6 @@ import pandas as pd
 from geopy.distance import geodesic
 from solvers.base_solver import BaseSolver
 from solvers.nearest_neighbor import NearestNeighborSolver
-from solvers.ortools_solver import ORToolsSolver
 from utils.distance_calculator import DistanceCalculator
 from utils.geocoder import LocationGeocoder
 
@@ -137,6 +136,37 @@ class SolverRunner:
         
         # Use the distance calculator
         return self.distance_calculator.compute_distance_matrix(locations)
+    
+    def get_all_solvers(self) -> List[BaseSolver]:
+        """
+        Get all available solvers (excluding OR-Tools).
+        
+        Returns:
+            List of initialized solver instances
+        """
+        from solvers.nearest_neighbor import NearestNeighborSolver
+        # Import new solvers as they are created
+        try:
+            from solvers.held_karp import HeldKarpSolver
+            has_held_karp = True
+        except ImportError:
+            has_held_karp = False
+        
+        try:
+            from solvers.branch_and_bound import BranchAndBoundSolver
+            has_branch_bound = True
+        except ImportError:
+            has_branch_bound = False
+        
+        solvers = [NearestNeighborSolver()]
+        
+        if has_held_karp:
+            solvers.append(HeldKarpSolver())
+        
+        if has_branch_bound:
+            solvers.append(BranchAndBoundSolver())
+        
+        return solvers
     
     def run_solver_on_instance(self, solver: BaseSolver, instance: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -299,12 +329,8 @@ def main():
     """Main function to run solver comparison."""
     runner = SolverRunner()
     
-    # Initialize solvers
-    solvers = [
-        NearestNeighborSolver(),
-        ORToolsSolver("first_solution"),
-        ORToolsSolver("local_search")
-    ]
+    # Get all available solvers (excluding OR-Tools)
+    solvers = runner.get_all_solvers()
     
     # Run comparison
     results = runner.compare_solvers(solvers)
