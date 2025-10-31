@@ -63,3 +63,5 @@ htmlcov/
 visualization/output/*.json
 visualization/output/*.txt
 
+# Model checkpoints
+train/models/
