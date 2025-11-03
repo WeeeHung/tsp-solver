@@ -30,6 +30,7 @@ class BranchAndBoundSolver(BaseSolver):
         self.best_route = []
         self.nodes_explored = 0
         self.nodes_pruned = 0
+        # Removed self.max_nodes
     
     def solve(self, distance_matrix: np.ndarray, locations: List[Dict[str, Any]]) -> Tuple[List[int], float]:
         """
@@ -84,7 +85,6 @@ class BranchAndBoundSolver(BaseSolver):
         
         # Print statistics
         print(f"    Nodes explored: {self.nodes_explored:,}, Nodes pruned: {self.nodes_pruned:,}")
-        
         return self.best_route, self.best_distance
     
     def _greedy_solution(self, distance_matrix: np.ndarray, n: int) -> Tuple[List[int], float]:
@@ -127,11 +127,12 @@ class BranchAndBoundSolver(BaseSolver):
         current_distance: float
     ) -> float:
         """
-        Calculate lower bound for the current partial tour using MST heuristic.
+        Calculate lower bound for the current partial tour using improved MST heuristic.
         
-        Lower bound = current_distance + MST of unvisited nodes + 
-                     min edge from last node to unvisited + 
-                     min edge from unvisited to start
+        Uses the 1-tree lower bound approach:
+        - Current path cost
+        - MST of (unvisited nodes + start node)
+        - Minimum edge from current node to MST
         
         Args:
             distance_matrix: Distance matrix
@@ -156,19 +157,31 @@ class BranchAndBoundSolver(BaseSolver):
         # Start with current distance
         lower_bound = current_distance
         
-        # Add minimum edge from last visited node to any unvisited node
+        # For a tighter bound, we need:
+        # 1. Cost to connect current position to unvisited nodes
+        # 2. Cost to traverse unvisited nodes (using MST as lower bound)
+        # 3. Cost to return to start
+        
         last_node = current_route[-1]
-        min_to_unvisited = min(distance_matrix[last_node][node] for node in unvisited)
-        lower_bound += min_to_unvisited
         
-        # Add minimum edge from any unvisited node back to start (node 0)
-        min_to_start = min(distance_matrix[node][0] for node in unvisited)
-        lower_bound += min_to_start
+        # If only one unvisited node, just compute direct path
+        if len(unvisited) == 1:
+            next_node = unvisited[0]
+            lower_bound += distance_matrix[last_node][next_node]
+            lower_bound += distance_matrix[next_node][0]
+            return lower_bound
         
-        # Add MST cost of unvisited nodes (simplified - just use minimum edges)
-        if len(unvisited) > 1:
-            mst_cost = self._simple_mst(distance_matrix, unvisited)
-            lower_bound += mst_cost
+        # For multiple unvisited nodes, use MST-based bound
+        # Create a set with unvisited nodes plus the start node (for return)
+        nodes_for_mst = unvisited + [0]
+        
+        # Get MST cost for these nodes
+        mst_cost = self._simple_mst(distance_matrix, nodes_for_mst)
+        
+        # Add minimum edge from current node to any unvisited node
+        min_from_current = min(distance_matrix[last_node][node] for node in unvisited)
+        
+        lower_bound += min_from_current + mst_cost
         
         return lower_bound
     
@@ -224,6 +237,10 @@ class BranchAndBoundSolver(BaseSolver):
             current_distance: Distance traveled so far
         """
         self.nodes_explored += 1
+        
+        # Progress reporting (every 100k nodes)
+        if self.nodes_explored % 100000 == 0:
+            print(f"    Progress: {self.nodes_explored:,} nodes explored, {self.nodes_pruned:,} nodes pruned, current best: {self.best_distance:.2f} km")
         
         # Base case: all locations visited
         if len(visited) == n:

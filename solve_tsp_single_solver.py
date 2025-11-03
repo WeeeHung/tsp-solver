@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 """
-TSP solver that reads locations from a text file and compares multiple solvers.
+TSP solver that runs a single specified solver.
 
 Usage:
-    python solve_tsp.py locations.txt [region]
+    python solve_tsp_single_solver.py <locations_file> <solver_name> [region]
     
 Example:
-    python solve_tsp.py my_locations.txt sg
+    python solve_tsp_single_solver.py jc_locations.txt branch_and_bound sg
+    
+Available solvers:
+    - nearest_neighbor
+    - held_karp
+    - branch_and_bound
 """
 
 import sys
@@ -28,17 +33,43 @@ def read_locations_from_file(filename: str) -> List[str]:
         sys.exit(1)
 
 
+def get_solver_by_name(solver_name: str):
+    """Get a solver instance by name."""
+    solver_name = solver_name.lower()
+    
+    if solver_name == "nearest_neighbor":
+        from solvers.nearest_neighbor import NearestNeighborSolver
+        return NearestNeighborSolver()
+    elif solver_name == "held_karp":
+        from solvers.held_karp import HeldKarpSolver
+        return HeldKarpSolver()
+    elif solver_name == "branch_and_bound":
+        from solvers.branch_and_bound import BranchAndBoundSolver
+        return BranchAndBoundSolver()
+    else:
+        print(f"❌ Error: Unknown solver '{solver_name}'")
+        print("\nAvailable solvers:")
+        print("  - nearest_neighbor")
+        print("  - held_karp")
+        print("  - branch_and_bound")
+        sys.exit(1)
+
+
 def main():
     """Main entry point."""
-    if len(sys.argv) < 2:
-        print("Usage: python solve_tsp.py <locations_file> [region]")
+    if len(sys.argv) < 3:
+        print("Usage: python solve_tsp_single_solver.py <locations_file> <solver_name> [region]")
         print("\nExample:")
-        print("  python solve_tsp.py my_locations.txt sg")
-        print("\nThe locations file should contain one location per line.")
+        print("  python solve_tsp_single_solver.py jc_locations.txt branch_and_bound sg")
+        print("\nAvailable solvers:")
+        print("  - nearest_neighbor")
+        print("  - held_karp")
+        print("  - branch_and_bound")
         sys.exit(1)
     
     filename = sys.argv[1]
-    region = sys.argv[2] if len(sys.argv) > 2 else "sg"
+    solver_name = sys.argv[2]
+    region = sys.argv[3] if len(sys.argv) > 3 else "sg"
     
     # Read locations
     print(f"\n📍 Reading locations from: {filename}")
@@ -49,6 +80,10 @@ def main():
         sys.exit(1)
     
     print(f"✓ Found {len(locations)} locations")
+    
+    # Get the solver
+    print(f"\n🔧 Using solver: {solver_name}")
+    solver = get_solver_by_name(solver_name)
     
     # Initialize runner
     print(f"\n🌍 Geocoding locations (region: {region})...")
@@ -75,50 +110,26 @@ def main():
         instance_name=instance_name
     )
     
-    # Get all available solvers
-    print(f"\n🔧 Comparing TSP Solvers...")
-    solvers = runner.get_all_solvers()
+    # Run the solver
+    print(f"\n⚙️  Running {solver.name}...")
+    result = runner.run_solver_on_instance(solver, instance)
     
-    # Run all solvers and collect results
-    results = []
-    for solver in solvers:
-        print(f"\n  Running {solver.name}...")
-        result = runner.run_solver_on_instance(solver, instance)
-        results.append(result)
-        print(f"    Distance: {result['total_distance']:.2f} km")
-        print(f"    Time: {result['solve_time']:.4f} seconds")
-    
-    # Print comparison
+    # Print results
     print(f"\n{'='*70}")
-    print(f"📊 SOLVER COMPARISON")
+    print(f"✅ SOLUTION: {result['solver_name']}")
     print(f"{'='*70}")
-    
-    # Sort by distance (best first)
-    results_sorted = sorted(results, key=lambda x: x['total_distance'])
-    
-    print(f"\n{'Rank':<6} {'Solver':<25} {'Distance (km)':<15} {'Time (s)':<12}")
-    print(f"{'-'*70}")
-    
-    for rank, result in enumerate(results_sorted, 1):
-        print(f"{rank:<6} {result['solver_name']:<25} {result['total_distance']:<15.2f} {result['solve_time']:<12.4f}")
-    
-    # Show the best route
-    best_result = results_sorted[0]
-    print(f"\n{'='*70}")
-    print(f"✅ BEST SOLUTION: {best_result['solver_name']}")
-    print(f"{'='*70}")
-    print(f"Total Distance: {best_result['total_distance']:.2f} km")
-    print(f"Solve Time: {best_result['solve_time']:.4f} seconds")
+    print(f"Total Distance: {result['total_distance']:.2f} km")
+    print(f"Solve Time: {result['solve_time']:.4f} seconds")
     
     print(f"\n{'='*70}")
     print(f"🗺️  OPTIMAL ROUTE")
     print(f"{'='*70}")
     
-    if 'route_locations' in best_result:
-        for i, loc in enumerate(best_result['route_locations'], 1):
+    if 'route_locations' in result:
+        for i, loc in enumerate(result['route_locations'], 1):
             if i == 1:
                 print(f"START: {loc['name']}")
-            elif i == len(best_result['route_locations']):
+            elif i == len(result['route_locations']):
                 print(f"END:   {loc['name']} (back to start)")
             else:
                 print(f"  {i}.   {loc['name']}")
@@ -132,8 +143,8 @@ def main():
     print(f"✓ Cached locations: data/custom_locations.json")
     print()
     
-    # Generate visualizations for all results
-    runner.visualize_results(results)
+    # Generate visualization
+    runner.visualize_results([result])
 
 
 if __name__ == "__main__":
