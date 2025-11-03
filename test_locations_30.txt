@@ -1,0 +1,34 @@
+# Test locations file — 30 locations
+# Lines starting with # are comments and will be ignored
+# Enter one location per line
+
+Marina Bay Sands, Singapore
+Gardens by the Bay, Singapore
+Singapore Flyer
+Merlion Park, Singapore
+Raffles Hotel, Singapore
+Orchard Road, Singapore
+Chinatown, Singapore
+Sentosa Island, Singapore
+Little India, Singapore
+National Gallery Singapore
+Clarke Quay, Singapore
+Esplanade - Theatres on the Bay, Singapore
+Singapore Botanic Gardens, Singapore
+Singapore Zoo, Singapore
+Jurong Bird Park, Singapore
+Haw Par Villa, Singapore
+Mount Faber, Singapore
+Bukit Timah Nature Reserve, Singapore
+Fort Canning Park, Singapore
+Kranji War Memorial, Singapore
+Jewel Changi Airport, Singapore
+Sungei Buloh Wetland Reserve, Singapore
+Marina Barrage, Singapore
+Lau Pa Sat, Singapore
+Tiong Bahru, Singapore
+Haji Lane, Singapore
+Bugis Street, Singapore
+Pulau Ubin, Singapore
+S.E.A. Aquarium, Sentosa, Singapore
+ArtScience Museum, Singapore

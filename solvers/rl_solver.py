@@ -12,8 +12,8 @@ class RLSolver(BaseSolver):
     
     This solver uses a pre-trained RL model to predict the route for TSP.
     
-    Time Complexity: O(n)
-    Space Complexity: O(n)
+    Time Complexity: O(n^3)
+    Space Complexity: O(n^2)
     """
     
     def __init__(self):
