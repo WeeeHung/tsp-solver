@@ -157,7 +157,13 @@ class SolverRunner:
             has_branch_bound = True
         except ImportError:
             has_branch_bound = False
-        
+
+        try:
+            from solvers.rl_solver import RLSolver
+            has_rl_solver = True
+        except ImportError:
+            has_rl_solver = False
+
         solvers = [NearestNeighborSolver()]
         
         if has_held_karp:
@@ -165,6 +171,9 @@ class SolverRunner:
         
         if has_branch_bound:
             solvers.append(BranchAndBoundSolver())
+
+        if has_rl_solver:
+            solvers.append(RLSolver())
         
         return solvers
     

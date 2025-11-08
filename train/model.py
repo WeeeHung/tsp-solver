@@ -1,0 +1,279 @@
+import numpy as np
+import torch
+import random
+from collections import namedtuple
+import os
+
+import matplotlib.pyplot as plt
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.optim as optim
+
+""" Note: the code is not optimized for GPU
+"""
+device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+
+State = namedtuple('State', ('W', 'coords', 'partial_solution'))
+
+def process_observation(obs: dict) -> State:
+    """ Converts an observation dict into a State tuple."""
+    W_np = obs['W']
+    # normalize distances
+    max_W = np.max(W_np)
+    if max_W > 0:
+        W_np = W_np / max_W
+    W = torch.tensor(W_np, dtype=torch.float32, requires_grad=False, device=device)
+    coords = obs['coords']
+    partial_solution = obs['partial_solution']
+    return State(W=W, coords=coords, partial_solution=partial_solution)
+
+def state2tens(state: State) -> torch.Tensor:
+    """ Creates a Pytorch tensor representing the history of visited nodes, from a (single) state tuple.
+    Each node is represented by a feature vector with the following features:
+    - is_visited (1/0)
+    - is_first_node_in_solution (1/0)
+    - is_last_node_in_solution (1/0)
+    - distance_from_last_node_in_solution (float)
+    - distance_from_first_node_in_solution (float)
+    The output tensor has shape (nr_nodes, nr_features)
+    """
+    W = state.W
+    solution = set(state.partial_solution)
+    sol_last_node = state.partial_solution[-1] if len(state.partial_solution) > 0 else -1
+    sol_first_node = state.partial_solution[0] if len(state.partial_solution) > 0 else -1
+    coords = state.coords
+    nr_nodes = coords.shape[0]
+
+    xv = [[(1 if i in solution else 0),
+           (1 if i == sol_first_node else 0),
+           (1 if i == sol_last_node else 0),
+           (W[sol_last_node, i] if sol_last_node >= 0 else 0.0),
+           (W[sol_first_node, i] if sol_first_node >= 0 else 0.0),
+          ] for i in range(nr_nodes)]
+    
+    return torch.tensor(xv, dtype=torch.float32, requires_grad=False, device=device)
+
+
+NODE_DIM = 5  # Number of features per node in the input to the Q-network
+
+class QNet(nn.Module):
+    """ The neural net that will parameterize the function Q(s, a)
+
+        The input is the state (containing the graph and visited nodes),
+        and the output is a vector of size N containing Q(s, a) for each of the N actions a.
+    """
+
+    def __init__(self, emb_dim, T=2):
+        """ emb_dim: embedding dimension p
+            T: number of iterations for the graph embedding
+        """
+        super(QNet, self).__init__()
+        self.emb_dim = emb_dim
+        self.T = T
+        
+        # input node feature dimension
+        self.node_dim = NODE_DIM
+        
+        # We can have an extra layer after theta_1 (for the sake of example to make the network deeper)
+        nr_extra_layers_1 = 1
+        
+        # Build the learnable affine maps:
+        self.theta1 = nn.Linear(self.node_dim, self.emb_dim, True)
+        self.theta2 = nn.Linear(self.emb_dim, self.emb_dim, True)
+        self.theta3 = nn.Linear(self.emb_dim, self.emb_dim, True)
+        self.theta4 = nn.Linear(1, self.emb_dim, True)
+        self.theta5 = nn.Linear(2*self.emb_dim, 1, True)
+        self.theta6 = nn.Linear(self.emb_dim, self.emb_dim, True)
+        self.theta7 = nn.Linear(self.emb_dim, self.emb_dim, True)
+        
+        # register extra layers so that parameters are tracked by the module
+        self.theta1_extras = nn.ModuleList([nn.Linear(self.emb_dim, self.emb_dim, True) for _ in range(nr_extra_layers_1)])
+        
+    def forward(self, xv, Ws):
+        # xv: The node features (batch_size, num_nodes, node_dim)
+        # Ws: The graphs (batch_size, num_nodes, num_nodes) - distances normalized earlier
+        
+        num_nodes = xv.shape[1]
+        batch_size = xv.shape[0]
+        
+        # Graph embedding
+        # Convert distances into inverse-distance similarities and normalize per node.
+        # This uses information from Ws (the actual distances) rather than only binary connectivity.
+        W_sim = torch.where(Ws > 0, 1.0 / (Ws + 1e-6), torch.zeros_like(Ws))
+        W_denom = W_sim.sum(dim=2, keepdim=True) + 1e-6
+        
+        # Note: initialize mu on the same device as xv
+        mu = torch.zeros(batch_size, num_nodes, self.emb_dim, device=xv.device)
+        s1 = self.theta1(xv)  # (batch_size, num_nodes, emb_dim)
+        for layer in self.theta1_extras:
+            s1 = layer(F.relu(s1))  # we apply the extra layer
+        
+        s3_1 = F.relu(self.theta4(Ws.unsqueeze(3)))  # (batch_size, nr_nodes, nr_nodes, emb_dim)
+        s3_2 = torch.sum(s3_1, dim=1)  # (batch_size, nr_nodes, emb_dim)
+        s3 = self.theta3(s3_2)  # (batch_size, nr_nodes, emb_dim)
+        
+        for t in range(self.T):
+            # aggregate neighbor embeddings weighted by inverse-distance similarities
+            weighted = (W_sim.matmul(mu)) / W_denom
+            s2 = self.theta2(weighted)
+            mu = F.relu(s1 + s2 + s3)
+            
+        # prediction
+        # we repeat the global state (summed over nodes) for each node,
+        # in order to concatenate it to local states later
+        global_state = self.theta6(torch.sum(mu, dim=1, keepdim=True).repeat(1, num_nodes, 1))
+        
+        local_action = self.theta7(mu)  # (batch_dim, nr_nodes, emb_dim)
+            
+        out = F.relu(torch.cat([global_state, local_action], dim=2))
+        return self.theta5(out).squeeze(dim=2)
+
+
+class QFunction():
+    def __init__(self, model, optimizer, lr_scheduler):
+        self.model = model  # The actual QNet
+        self.optimizer = optimizer
+        self.lr_scheduler = lr_scheduler
+        self.loss_fn = nn.SmoothL1Loss()
+    
+    def predict(self, state_tsr, W):
+        # batch of 1 - only called at inference time
+        with torch.no_grad():
+            estimated_rewards = self.model(state_tsr.unsqueeze(0), W.unsqueeze(0))
+        return estimated_rewards[0]
+                
+    def get_best_action(self, state_tsr, state):
+        """ Computes the best (greedy) action to take from a given state
+            Returns a tuple containing the ID of the next node and the corresponding estimated reward
+        """
+        W = state.W
+        estimated_rewards = self.predict(state_tsr, W)  # size (nr_nodes,)
+        sorted_reward_idx = estimated_rewards.argsort(descending=True)
+        
+        solution = state.partial_solution
+        
+        already_in = set(solution)
+        for idx in sorted_reward_idx.tolist():
+            if (len(solution) == 0 or W[solution[-1], idx] > 0) and idx not in already_in:
+                return idx, estimated_rewards[idx].item()
+        
+    def batch_update(self, states_tsrs, Ws, actions, targets):
+        """ Take a gradient step using the loss computed on a batch of (states, Ws, actions, targets)
+        
+            states_tsrs: list of (single) state tensors
+            Ws: list of W tensors
+            actions: list of actions taken
+            targets: list of targets (resulting estimated rewards after taking the actions)
+        """        
+        Ws_tsr = torch.stack(Ws).to(device)
+        xv = torch.stack(states_tsrs).to(device)
+        self.optimizer.zero_grad()
+        
+        # the rewards estimated by Q for the given actions
+        estimated_rewards = self.model(xv, Ws_tsr)[range(len(actions)), actions]
+        
+        # Ensure targets are of type float32
+        targets_tensor = torch.tensor(targets, dtype=torch.float32, device=device)
+        
+        loss = self.loss_fn(estimated_rewards, targets_tensor)
+        loss_val = loss.item()
+        
+        loss.backward()
+        # gradient clipping to avoid exploding gradients
+        torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
+        self.optimizer.step()        
+        self.lr_scheduler.step()
+        
+        return loss_val
+
+
+SEED = 1  # A seed for the random number generator
+
+# Graph
+NR_NODES = 10  # Number of nodes N
+EMBEDDING_DIMENSIONS = 5  # Embedding dimension D
+EMBEDDING_ITERATIONS_T = 1  # Number of embedding iterations T (small increase)
+
+# Learning
+NR_EPISODES = 4001
+MEMORY_CAPACITY = 10000
+N_STEP_QL = 2  # Number of steps (n) in n-step Q-learning to wait before computing target reward estimate
+BATCH_SIZE = 16
+
+GAMMA = 0.9
+INIT_LR = 5e-3
+LR_DECAY_RATE = 1. - 2e-5  # learning rate decay
+
+MIN_EPSILON = 0.1
+EPSILON_DECAY_RATE = 6e-4  # epsilon decay
+
+FOLDER_NAME = './models'  # where to checkpoint the best models
+
+TAU = 0.005  # interpolation factor for soft updates (typical: 0.001-0.01)
+
+
+def init_model(fname=None):
+    """ Create a new model. If fname is defined, load the model from the specified file.
+    """
+    Q_net = QNet(EMBEDDING_DIMENSIONS, T=EMBEDDING_ITERATIONS_T).to(device)
+    # target network is a copy of online network used to compute stable targets
+    target_net = QNet(EMBEDDING_DIMENSIONS, T=EMBEDDING_ITERATIONS_T).to(device)
+    target_net.load_state_dict(Q_net.state_dict())
+
+    optimizer = optim.Adam(Q_net.parameters(), lr=INIT_LR)
+    lr_scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=LR_DECAY_RATE)
+    
+    if fname is not None:
+        # load checkpoint (contains at least 'model')
+        checkpoint = torch.load(fname, weights_only=False)
+        Q_net.load_state_dict(checkpoint['model'])
+        # if checkpoint contains a target model, load it; else replicate online weights
+        if 'target_model' in checkpoint:
+            target_net.load_state_dict(checkpoint['target_model'])
+        else:
+            target_net.load_state_dict(checkpoint['model'])
+        if 'optimizer' in checkpoint:
+            optimizer.load_state_dict(checkpoint['optimizer'])
+        if 'lr_scheduler' in checkpoint:
+            lr_scheduler.load_state_dict(checkpoint['lr_scheduler'])
+    
+    Q_func = QFunction(Q_net, optimizer, lr_scheduler)
+    return Q_func, Q_net, target_net, optimizer, lr_scheduler
+
+
+""" Get file with smallest distance
+"""
+model_dir = os.path.dirname(os.path.abspath(__file__))
+shortest_fname = os.path.join(model_dir, "best_model.tar")
+
+""" Load checkpoint
+"""
+Q_func, Q_net, target_net, optimizer, lr_scheduler = init_model(shortest_fname)
+
+
+def generate_route(W_np):
+    """ Generate a route using the trained model on the given distance matrix W_np.
+        W_np: numpy array of shape (N, N) containing the distances between nodes.
+        Returns a list of node indices representing the generated route.
+    """
+    nr_nodes = W_np.shape[0]
+    obs = {
+        'W': W_np,
+        'coords': np.zeros((nr_nodes, 2)),  # dummy coords
+        'partial_solution': []
+    }
+    state = process_observation(obs)
+    route = []
+    
+    while len(route) < nr_nodes:
+        state_tsr = state2tens(state)
+        next_node, _ = Q_func.get_best_action(state_tsr, state)
+        route.append(next_node)
+        
+        # update state
+        obs['partial_solution'] = route
+        state = process_observation(obs)
+    
+    return route
