@@ -1,0 +1,53 @@
+{
+  "locations": [
+    {
+      "id": 1,
+      "name": "Marina Bay Sands",
+      "address": "10 Bayfront Ave, Singapore 018956",
+      "latitude": 1.2831,
+      "longitude": 103.8603
+    },
+    {
+      "id": 2,
+      "name": "Gardens by the Bay",
+      "address": "18 Marina Gardens Dr, Singapore 018953",
+      "latitude": 1.2816,
+      "longitude": 103.8636
+    },
+    {
+      "id": 3,
+      "name": "Singapore Flyer",
+      "address": "30 Raffles Ave, Singapore 039803",
+      "latitude": 1.2893,
+      "longitude": 103.8631
+    },
+    {
+      "id": 4,
+      "name": "Sentosa Island",
+      "address": "8 Sentosa Gateway, Singapore 098269",
+      "latitude": 1.2494,
+      "longitude": 103.8303
+    },
+    {
+      "id": 5,
+      "name": "Orchard Road",
+      "address": "Orchard Rd, Singapore",
+      "latitude": 1.3048,
+      "longitude": 103.8318
+    },
+    {
+      "id": 6,
+      "name": "Singapore Zoo",
+      "address": "80 Mandai Lake Rd, Singapore 729826",
+      "latitude": 1.4043,
+      "longitude": 103.7930
+    },
+    {
+      "id": 7,
+      "name": "Changi Airport",
+      "address": "Airport Blvd, Singapore 819666",
+      "latitude": 1.3644,
+      "longitude": 103.9915
+    }
+  ]
+}

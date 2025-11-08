@@ -175,6 +175,7 @@ class SolverRunner:
         if has_rl_solver:
             solvers.append(RLSolver())
         
+        print("Available solvers: " + str(solvers))
         return solvers
     
     def run_solver_on_instance(self, solver: BaseSolver, instance: Dict[str, Any]) -> Dict[str, Any]:
@@ -340,7 +341,7 @@ def main():
     
     # Get all available solvers (excluding OR-Tools)
     solvers = runner.get_all_solvers()
-    
+
     # Run comparison
     results = runner.compare_solvers(solvers)
     

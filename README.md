@@ -13,6 +13,7 @@ A simple route planning system that solves the Travelling Salesman Problem using
   - Nearest Neighbor (Greedy Heuristic)
   - Held-Karp (Dynamic Programming - Optimal)
   - Branch & Bound (Tree Search with Pruning - Optimal)
+  - Reinforcement Learning Solver (requires PyTorch)
 
 ## Quick Start
 
@@ -61,6 +62,22 @@ Where:
 
 - `my_locations.txt` = your locations file
 - `sg` = region code (optional, default: `sg`)
+
+#### Run a single solver
+
+Use the single-runner script to benchmark one algorithm at a time:
+
+```bash
+python solve_tsp_single_solver.py my_locations.txt branch_and_bound sg
+```
+
+Where:
+
+- `my_locations.txt` = your locations file
+- `branch_and_bound` = solver (`nearest_neighbor`, `held_karp`, `branch_and_bound`, or `rl_solver`)
+- `sg` = region code (optional, default: `sg`)
+
+> ℹ️ `rl_solver` depends on the RL model in `train/` and requires extra packages (e.g., `torch`, `matplotlib`). Install them via `pip install -r requirements.txt` plus the optional training dependencies if you want to enable it.
 
 ## Example Output
 

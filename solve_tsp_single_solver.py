@@ -12,6 +12,7 @@ Available solvers:
     - nearest_neighbor
     - held_karp
     - branch_and_bound
+    - rl_solver
 """
 
 import sys
@@ -46,12 +47,22 @@ def get_solver_by_name(solver_name: str):
     elif solver_name == "branch_and_bound":
         from solvers.branch_and_bound import BranchAndBoundSolver
         return BranchAndBoundSolver()
+    elif solver_name == "rl_solver":
+        try:
+            from solvers.rl_solver import RLSolver
+        except ImportError as exc:
+            print("❌ Error: RL solver dependencies are missing.")
+            print("   Install the required packages (e.g., torch, matplotlib) and try again.")
+            print(f"   Details: {exc}")
+            sys.exit(1)
+        return RLSolver()
     else:
         print(f"❌ Error: Unknown solver '{solver_name}'")
         print("\nAvailable solvers:")
         print("  - nearest_neighbor")
         print("  - held_karp")
         print("  - branch_and_bound")
+        print("  - rl_solver")
         sys.exit(1)
 
 
@@ -65,6 +76,7 @@ def main():
         print("  - nearest_neighbor")
         print("  - held_karp")
         print("  - branch_and_bound")
+        print("  - rl_solver")
         sys.exit(1)
     
     filename = sys.argv[1]

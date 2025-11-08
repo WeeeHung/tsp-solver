@@ -30,7 +30,6 @@ class BranchAndBoundSolver(BaseSolver):
         self.best_route = []
         self.nodes_explored = 0
         self.nodes_pruned = 0
-        # Removed self.max_nodes
     
     def solve(self, distance_matrix: np.ndarray, locations: List[Dict[str, Any]]) -> Tuple[List[int], float]:
         """
