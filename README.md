@@ -58,6 +58,23 @@ Raffles Hotel, Singapore
 python solve_tsp.py my_locations.txt sg
 ```
 
+### 5. Launch the Web UI (optional)
+
+Prefer a visual workflow? Start the FastAPI server and open the new web dashboard:
+
+```bash
+uvicorn webapp.backend.app:app --reload
+```
+
+Then head to [http://localhost:8000](http://localhost:8000) and:
+
+- Paste locations (one per line) into the text area
+- Choose one or more solvers to run in parallel
+- Compare the travel distance/time for each solver
+- Click a solver card to reveal an embedded Google Maps route (requires a valid `GOOGLE_MAPS_API_KEY` in `.env`)
+
+> The web UI reuses the same solver stack, so ensure dependencies from `requirements.txt` are installed and that your `.env` file contains a working Google Maps API key.
+
 Where:
 
 - `my_locations.txt` = your locations file

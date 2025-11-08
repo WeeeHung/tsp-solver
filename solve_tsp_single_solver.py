@@ -18,6 +18,7 @@ Available solvers:
 import sys
 from typing import List
 from runner.solver_runner import SolverRunner
+from utils.solver_factory import get_solver_specs, instantiate_solvers
 
 
 def read_locations_from_file(filename: str) -> List[str]:
@@ -31,38 +32,6 @@ def read_locations_from_file(filename: str) -> List[str]:
         sys.exit(1)
     except Exception as e:
         print(f"❌ Error reading file: {e}")
-        sys.exit(1)
-
-
-def get_solver_by_name(solver_name: str):
-    """Get a solver instance by name."""
-    solver_name = solver_name.lower()
-    
-    if solver_name == "nearest_neighbor":
-        from solvers.nearest_neighbor import NearestNeighborSolver
-        return NearestNeighborSolver()
-    elif solver_name == "held_karp":
-        from solvers.held_karp import HeldKarpSolver
-        return HeldKarpSolver()
-    elif solver_name == "branch_and_bound":
-        from solvers.branch_and_bound import BranchAndBoundSolver
-        return BranchAndBoundSolver()
-    elif solver_name == "rl_solver":
-        try:
-            from solvers.rl_solver import RLSolver
-        except ImportError as exc:
-            print("❌ Error: RL solver dependencies are missing.")
-            print("   Install the required packages (e.g., torch, matplotlib) and try again.")
-            print(f"   Details: {exc}")
-            sys.exit(1)
-        return RLSolver()
-    else:
-        print(f"❌ Error: Unknown solver '{solver_name}'")
-        print("\nAvailable solvers:")
-        print("  - nearest_neighbor")
-        print("  - held_karp")
-        print("  - branch_and_bound")
-        print("  - rl_solver")
         sys.exit(1)
 
 
@@ -94,8 +63,23 @@ def main():
     print(f"✓ Found {len(locations)} locations")
     
     # Get the solver
+    available_specs = get_solver_specs(include_unavailable=True)
+    available_slugs = [spec["slug"] for spec in available_specs if spec["available"]]
+
+    if solver_name not in available_slugs:
+        print(f"❌ Error: Unknown or unavailable solver '{solver_name}'")
+        print("\nAvailable solvers:")
+        for spec in available_specs:
+            status = " (missing dependencies)" if not spec["available"] else ""
+            print(f"  - {spec['slug']}{status}")
+        sys.exit(1)
+
     print(f"\n🔧 Using solver: {solver_name}")
-    solver = get_solver_by_name(solver_name)
+    try:
+        solver = instantiate_solvers([solver_name])[0]
+    except ValueError as exc:
+        print(f"❌ Error: {exc}")
+        sys.exit(1)
     
     # Initialize runner
     print(f"\n🌍 Geocoding locations (region: {region})...")

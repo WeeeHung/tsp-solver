@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TSP Solver Playground</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+    <main class="container">
+        <header>
+            <h1>Travelling Salesman Route Planner</h1>
+            <p>Enter a list of places (one per line), pick one or more solvers, and compare their routes instantly.</p>
+        </header>
+
+        <section class="card">
+            <form id="solve-form">
+                <div class="form-group">
+                    <label for="locations-input">Locations</label>
+                    <textarea id="locations-input" rows="8" placeholder="Marina Bay Sands, Singapore&#10;Gardens by the Bay, Singapore&#10;..." required style="color: #333;"></textarea>
+                    <small>At least two locations are required. Each should be separated by a newline.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="region-input">Region Bias (optional)</label>
+                    <input id="region-input" type="text" maxlength="10" placeholder="sg" />
+                    <small>Use ISO 3166-1 alpha-2 codes for better geocoding accuracy.</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Solvers</label>
+                    <div id="solver-options" class="solver-options"></div>
+                    <small>Select one or more solvers to compare. Unavailable solvers are shown in gray.</small>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="submit-button">Solve Route</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="results-section" class="card hidden">
+            <h2>Results</h2>
+            <div id="results-container"></div>
+        </section>
+    </main>
+
+    <template id="solver-option-template">
+        <label class="solver-option">
+            <input type="checkbox" name="solver" />
+            <span class="solver-name"></span>
+            <span class="solver-description"></span>
+        </label>
+    </template>
+
+    <template id="result-card-template">
+        <article class="result-card">
+            <header>
+                <h3 class="solver-title"></h3>
+                <p class="solver-meta"></p>
+            </header>
+            <div class="route-details"></div>
+            <div class="actions">
+                <button class="toggle-map" type="button">Show Route Map</button>
+                <a class="share-link" href="#" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+            </div>
+            <div class="map-container hidden">
+                <iframe class="map-frame" loading="lazy" allowfullscreen></iframe>
+            </div>
+        </article>
+    </template>
+
+    <script src="/assets/app.js" type="module"></script>
+</body>
+</html>
+
