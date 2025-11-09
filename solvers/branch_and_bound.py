@@ -128,10 +128,11 @@ class BranchAndBoundSolver(BaseSolver):
         """
         Calculate lower bound for the current partial tour using improved MST heuristic.
         
-        Uses the 1-tree lower bound approach:
+        Uses a 1-tree style lower bound:
         - Current path cost
-        - MST of (unvisited nodes + start node)
-        - Minimum edge from current node to MST
+        - MST over unvisited nodes
+        - Minimum edge from current node into the unvisited set
+        - Minimum edge from unvisited nodes back to the start
         
         Args:
             distance_matrix: Distance matrix
@@ -171,23 +172,29 @@ class BranchAndBoundSolver(BaseSolver):
             return lower_bound
         
         # For multiple unvisited nodes, use MST-based bound
-        # Create a set with unvisited nodes plus the start node (for return)
-        nodes_for_mst = unvisited + [0]
-        
+        nodes_for_mst = unvisited
+
         # Get MST cost for these nodes
         mst_cost = self._simple_mst(distance_matrix, nodes_for_mst)
-        
+
         # Add minimum edge from current node to any unvisited node
         min_from_current = min(distance_matrix[last_node][node] for node in unvisited)
-        
-        lower_bound += min_from_current + mst_cost
+
+        # Add minimum edge from any unvisited node back to the start node
+        min_to_start = min(distance_matrix[node][0] for node in unvisited)
+
+        lower_bound += mst_cost + min_from_current + min_to_start
         
         return lower_bound
     
     def _simple_mst(self, distance_matrix: np.ndarray, nodes: List[int]) -> float:
         """
         Calculate MST cost using Prim's algorithm (simplified).
-        
+
+        To keep the lower bound admissible even if the distance matrix is
+        asymmetric (e.g., driving times), we treat edges as undirected and
+        use the cheaper direction between each pair when building the MST.
+
         Args:
             distance_matrix: Distance matrix
             nodes: List of nodes to include in MST
@@ -198,19 +205,26 @@ class BranchAndBoundSolver(BaseSolver):
         if len(nodes) <= 1:
             return 0.0
         
-        # Prim's algorithm
+        # Prim's algorithm (treat edges as undirected using the cheaper direction)
         in_mst = {nodes[0]}
         mst_cost = 0.0
         
         while len(in_mst) < len(nodes):
-            # Find minimum edge from MST to outside
             min_edge = float('inf')
+            next_node = None
+            
             for u in in_mst:
                 for v in nodes:
-                    if v not in in_mst:
-                        if distance_matrix[u][v] < min_edge:
-                            min_edge = distance_matrix[u][v]
-                            next_node = v
+                    if v in in_mst:
+                        continue
+                    edge_cost = min(distance_matrix[u][v], distance_matrix[v][u])
+                    if edge_cost < min_edge:
+                        min_edge = edge_cost
+                        next_node = v
+            
+            if next_node is None:
+                # Graph might be disconnected; return infinite cost to avoid inadmissible bound
+                return float('inf')
             
             in_mst.add(next_node)
             mst_cost += min_edge

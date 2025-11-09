@@ -199,13 +199,28 @@ class MapVisualizer:
             "instance_name": instance_name,
             "routes": []
         }
-        
+
+        # if there is "held_karp" in the results, take the total_distance of the held_karp result as golden
+        # to calculate the optimality gap percentage of the other solvers
+        golden_distance = None
+        for result in results:
+            if result["solver_name"] == "Held-Karp (DP)":
+                golden_distance = result["total_distance"]
+                break
+        if golden_distance is not None:
+            for result in results:
+                result["optimality_gap_percent"] = (
+                    abs(result["total_distance"] - golden_distance) / golden_distance
+                ) * 100
+
+
         for result in results:
             route_info = {
                 "solver_name": result["solver_name"],
                 "total_distance_km": result["total_distance"],
                 "solve_time_seconds": result.get("solve_time", 0),
                 "num_locations": result.get("num_locations", 0),
+                "optimality_gap_percent": result.get("optimality_gap_percent", 0),
                 "sequence": []
             }
             

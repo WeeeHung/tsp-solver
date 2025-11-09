@@ -21,6 +21,7 @@ class SolverRunner:
         self.locations = []
         self.test_instances = []
         self.results = []
+        self.current_locations_source = None
         self.distance_calculator = DistanceCalculator(use_google_maps=use_google_maps)
         self.geocoder = None
     
@@ -35,6 +36,7 @@ class SolverRunner:
         with open(locations_path, 'r') as f:
             data = json.load(f)
         self.locations = data["locations"]
+        self.current_locations_source = locations_file
         print(f"📍 Loaded {len(self.locations)} locations from {locations_file}")
     
     def load_locations_from_names(self, location_names: List[str], 

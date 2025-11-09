@@ -69,7 +69,7 @@ def main():
         sys.exit(1)
     
     # Create instance
-    instance_name = f"TSP Tour ({len(locations)} stops)"
+    instance_name = filename.split(".")[0].split("/")[-1]
     instance = runner.create_custom_instance(
         location_names=locations,
         instance_name=instance_name

@@ -37,9 +37,13 @@ class RLSolver(BaseSolver):
         
         # Get predicted route from the RL model
         route = generate_route(distance_matrix)
+
+        # rotate such that 0 is the first element
+        index = route.index(0)
+        route = route[index:] + route[:index]
         
         # Return to depot
-        route.append(route[0])
+        route.append(0)
         
         # Calculate total distance
         total_distance = sum(distance_matrix[route[i]][route[i+1]] for i in range(len(route)-1))

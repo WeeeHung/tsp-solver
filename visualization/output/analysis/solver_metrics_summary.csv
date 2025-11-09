@@ -1,0 +1,36 @@
+instance_name,solver_name,total_distance_km,solve_time_seconds,optimality_gap_percent,num_locations,source_file
+clustered_location_1,Branch & Bound,123.611,0.011073827743530273,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_1_routes.json
+clustered_location_1,Held-Karp (DP),123.611,0.010274887084960938,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_1_routes.json
+clustered_location_1,Nearest Neighbor,124.99699999999999,6.389617919921875e-05,1.1212594348399263,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_1_routes.json
+clustered_location_1,RL Solver,125.57,0.030638933181762695,1.5848104133127219,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_1_routes.json
+,,,,,,
+clustered_location_2,Branch & Bound,109.57,0.01924610137939453,1.2969658405769835e-14,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_2_routes.json
+clustered_location_2,Held-Karp (DP),109.56999999999998,0.011055231094360352,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_2_routes.json
+clustered_location_2,Nearest Neighbor,123.886,6.604194641113281e-05,13.065620151501342,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_2_routes.json
+clustered_location_2,RL Solver,110.94900000000001,0.003940105438232422,1.2585561741352866,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_2_routes.json
+,,,,,,
+clustered_location_3,Branch & Bound,157.71,7.114601135253906,0.0,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_3_routes.json
+clustered_location_3,Held-Karp (DP),157.71,16.4732608795166,0.0,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_3_routes.json
+clustered_location_3,Nearest Neighbor,186.768,0.0001270771026611328,18.424957199923906,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_3_routes.json
+clustered_location_3,RL Solver,185.734,0.012830972671508789,17.769323441760193,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_3_routes.json
+,,,,,,
+dense_location_1,Branch & Bound,8.849,0.014227151870727539,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_1_routes.json
+dense_location_1,Held-Karp (DP),8.849,0.010662078857421875,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_1_routes.json
+dense_location_1,Nearest Neighbor,8.955,6.079673767089844e-05,1.1978754661543662,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_1_routes.json
+dense_location_1,RL Solver,10.056000000000001,0.0041811466217041016,13.639959317437006,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_1_routes.json
+,,,,,,
+dense_location_2,Branch & Bound,13.33,0.014117002487182617,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_2_routes.json
+dense_location_2,Held-Karp (DP),13.33,0.009140968322753906,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_2_routes.json
+dense_location_2,Nearest Neighbor,17.156,6.699562072753906e-05,28.70217554388596,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_2_routes.json
+dense_location_2,RL Solver,14.892,0.00821375846862793,11.717929482370588,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_2_routes.json
+,,,,,,
+sparse_location_1,Branch & Bound,129.0022906865855,0.010303020477294922,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_1_routes.json
+sparse_location_1,Held-Karp (DP),129.0022906865855,0.011137962341308594,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_1_routes.json
+sparse_location_1,Nearest Neighbor,149.9292906865855,7.510185241699219e-05,16.222192558458282,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_1_routes.json
+sparse_location_1,RL Solver,157.65570884064635,0.006818056106567383,22.21155764099965,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_1_routes.json
+,,,,,,
+sparse_location_2,Branch & Bound,147.33166836202892,2.5903470516204834,0.0,15,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_2_routes.json
+sparse_location_2,Held-Karp (DP),147.33166836202892,0.27221012115478516,0.0,15,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_2_routes.json
+sparse_location_2,Nearest Neighbor,176.8609873321658,0.00011491775512695312,20.042750685193027,15,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_2_routes.json
+sparse_location_2,RL Solver,167.26098733216577,0.010531902313232422,13.526839946701596,15,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_2_routes.json
+,,,,,,
