@@ -3,7 +3,6 @@ import numpy as np
 from typing import List, Dict, Any, Tuple
 
 from .base_solver import BaseSolver
-from train.utils import total_distance
 from train.model import generate_route
 
 class RLSolver(BaseSolver):
@@ -39,10 +38,12 @@ class RLSolver(BaseSolver):
         # Get predicted route from the RL model
         route = generate_route(distance_matrix)
         
+        # Return to depot
+        route.append(0)
+        
         # Calculate total distance
-        dist = total_distance(route, distance_matrix)
+        total_distance = sum(distance_matrix[route[i]][route[i+1]] for i in range(len(route)-1))
         
         self.solve_time = time.time() - start_time
-        
-        return route, dist
-    
+
+        return route, total_distance
