@@ -39,7 +39,7 @@ class RLSolver(BaseSolver):
         route = generate_route(distance_matrix)
         
         # Return to depot
-        route.append(0)
+        route.append(route[0])
         
         # Calculate total distance
         total_distance = sum(distance_matrix[route[i]][route[i+1]] for i in range(len(route)-1))
