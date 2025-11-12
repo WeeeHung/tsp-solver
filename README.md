@@ -141,6 +141,19 @@ All files saved in `visualization/output/`:
 2. **`*_google_maps_link.txt`** - Direct URL to view route in Google Maps
 3. **`data/custom_locations.json`** - Cached geocoded locations
 
+### Analyze Solver Performance
+
+Aggregate solver metrics and generate comparison charts once you have at least one `*_routes.json` file:
+
+```bash
+python visualization/analyze_routes.py
+```
+
+Results are written to `visualization/output/analysis/`:
+
+- `solver_metrics_summary.csv` plus per-instance CSVs with blank rows separating each dataset
+- Per-instance bar charts for distance, solve time, and optimality gap (`total_distance_km_comparison.png`, etc.) stored inside subfolders named after each instance
+
 ## Examples
 
 ### Singapore Tour

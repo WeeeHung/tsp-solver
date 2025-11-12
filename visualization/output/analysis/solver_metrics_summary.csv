@@ -24,6 +24,11 @@ dense_location_2,Held-Karp (DP),13.33,0.009140968322753906,0.0,10,/Users/weehung
 dense_location_2,Nearest Neighbor,17.156,6.699562072753906e-05,28.70217554388596,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_2_routes.json
 dense_location_2,RL Solver,14.892,0.00821375846862793,11.717929482370588,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_2_routes.json
 ,,,,,,
+dense_location_3,Branch & Bound,30.41999999999999,12848.789974927902,0.0,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_3_routes.json
+dense_location_3,Held-Karp (DP),30.41999999999999,17.073602199554443,0.0,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_3_routes.json
+dense_location_3,Nearest Neighbor,35.617000000000004,0.00021409988403320312,17.08415516107829,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_3_routes.json
+dense_location_3,RL Solver,38.101000000000006,0.03508186340332031,25.249835634451077,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_3_routes.json
+,,,,,,
 sparse_location_1,Branch & Bound,129.0022906865855,0.010303020477294922,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_1_routes.json
 sparse_location_1,Held-Karp (DP),129.0022906865855,0.011137962341308594,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_1_routes.json
 sparse_location_1,Nearest Neighbor,149.9292906865855,7.510185241699219e-05,16.222192558458282,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_1_routes.json
