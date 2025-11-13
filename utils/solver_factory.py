@@ -126,3 +126,4 @@ def default_solver_slugs() -> List[str]:
     return [spec["slug"] for spec in get_solver_specs()]
 
 
+

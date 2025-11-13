@@ -1,41 +1,296 @@
 instance_name,solver_name,total_distance_km,solve_time_seconds,optimality_gap_percent,num_locations,source_file
-clustered_location_1,Branch & Bound,123.611,0.011073827743530273,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_1_routes.json
-clustered_location_1,Held-Karp (DP),123.611,0.010274887084960938,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_1_routes.json
-clustered_location_1,Nearest Neighbor,124.99699999999999,6.389617919921875e-05,1.1212594348399263,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_1_routes.json
-clustered_location_1,RL Solver,125.57,0.030638933181762695,1.5848104133127219,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_1_routes.json
+clustered_location_1,Branch & Bound,26.933,0.007964849472045898,0.0,10,visualization/output/clustered_location_1_routes.json
+clustered_location_1,Held-Karp (DP),26.933,0.004011631011962891,0.0,10,visualization/output/clustered_location_1_routes.json
+clustered_location_1,Nearest Neighbor,28.209,6.008148193359375e-05,4.737682397059369,10,visualization/output/clustered_location_1_routes.json
+clustered_location_1,RL Solver,28.967,0.031059980392456055,7.552073664278019,10,visualization/output/clustered_location_1_routes.json
 ,,,,,,
-clustered_location_2,Branch & Bound,109.57,0.01924610137939453,1.2969658405769835e-14,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_2_routes.json
-clustered_location_2,Held-Karp (DP),109.56999999999998,0.011055231094360352,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_2_routes.json
-clustered_location_2,Nearest Neighbor,123.886,6.604194641113281e-05,13.065620151501342,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_2_routes.json
-clustered_location_2,RL Solver,110.94900000000001,0.003940105438232422,1.2585561741352866,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_2_routes.json
+clustered_location_10,Branch & Bound,28.831000000000003,0.05356311798095703,0.0,10,visualization/output/clustered_location_10_routes.json
+clustered_location_10,Held-Karp (DP),28.831000000000003,0.010350227355957031,0.0,10,visualization/output/clustered_location_10_routes.json
+clustered_location_10,Nearest Neighbor,33.201,5.793571472167969e-05,15.157295966147538,10,visualization/output/clustered_location_10_routes.json
+clustered_location_10,RL Solver,33.765,0.005990266799926758,17.113523637751022,10,visualization/output/clustered_location_10_routes.json
 ,,,,,,
-clustered_location_3,Branch & Bound,157.71,7.114601135253906,0.0,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_3_routes.json
-clustered_location_3,Held-Karp (DP),157.71,16.4732608795166,0.0,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_3_routes.json
-clustered_location_3,Nearest Neighbor,186.768,0.0001270771026611328,18.424957199923906,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_3_routes.json
-clustered_location_3,RL Solver,185.734,0.012830972671508789,17.769323441760193,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/clustered_location_3_routes.json
+clustered_location_11,Branch & Bound,29.593999999999998,2.2593190670013428,0.0,15,visualization/output/clustered_location_11_routes.json
+clustered_location_11,Held-Karp (DP),29.593999999999998,0.2636270523071289,0.0,15,visualization/output/clustered_location_11_routes.json
+clustered_location_11,Nearest Neighbor,33.373,5.888938903808594e-05,12.769480300060824,15,visualization/output/clustered_location_11_routes.json
+clustered_location_11,RL Solver,33.9,0.010647773742675781,14.550246671622629,15,visualization/output/clustered_location_11_routes.json
 ,,,,,,
-dense_location_1,Branch & Bound,8.849,0.014227151870727539,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_1_routes.json
-dense_location_1,Held-Karp (DP),8.849,0.010662078857421875,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_1_routes.json
-dense_location_1,Nearest Neighbor,8.955,6.079673767089844e-05,1.1978754661543662,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_1_routes.json
-dense_location_1,RL Solver,10.056000000000001,0.0041811466217041016,13.639959317437006,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_1_routes.json
+clustered_location_12,Branch & Bound,13.274999999999997,0.4431030750274658,0.0,15,visualization/output/clustered_location_12_routes.json
+clustered_location_12,Held-Karp (DP),13.274999999999997,0.27584195137023926,0.0,15,visualization/output/clustered_location_12_routes.json
+clustered_location_12,Nearest Neighbor,15.466999999999999,8.821487426757812e-05,16.512241054613956,15,visualization/output/clustered_location_12_routes.json
+clustered_location_12,RL Solver,15.585999999999999,0.008636236190795898,17.40866290018834,15,visualization/output/clustered_location_12_routes.json
 ,,,,,,
-dense_location_2,Branch & Bound,13.33,0.014117002487182617,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_2_routes.json
-dense_location_2,Held-Karp (DP),13.33,0.009140968322753906,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_2_routes.json
-dense_location_2,Nearest Neighbor,17.156,6.699562072753906e-05,28.70217554388596,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_2_routes.json
-dense_location_2,RL Solver,14.892,0.00821375846862793,11.717929482370588,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_2_routes.json
+clustered_location_13,Branch & Bound,42.909,3.776746988296509,0.0,15,visualization/output/clustered_location_13_routes.json
+clustered_location_13,Held-Karp (DP),42.909,0.257951021194458,0.0,15,visualization/output/clustered_location_13_routes.json
+clustered_location_13,Nearest Neighbor,47.92100000000001,3.218650817871094e-05,11.680533221468707,15,visualization/output/clustered_location_13_routes.json
+clustered_location_13,RL Solver,87.916,0.009071111679077148,104.88941713859563,15,visualization/output/clustered_location_13_routes.json
 ,,,,,,
-dense_location_3,Branch & Bound,30.41999999999999,12848.789974927902,0.0,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_3_routes.json
-dense_location_3,Held-Karp (DP),30.41999999999999,17.073602199554443,0.0,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_3_routes.json
-dense_location_3,Nearest Neighbor,35.617000000000004,0.00021409988403320312,17.08415516107829,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_3_routes.json
-dense_location_3,RL Solver,38.101000000000006,0.03508186340332031,25.249835634451077,20,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/dense_location_3_routes.json
+clustered_location_14,Branch & Bound,88.97100000000002,2.1326870918273926,0.0,15,visualization/output/clustered_location_14_routes.json
+clustered_location_14,Held-Karp (DP),88.97100000000002,0.23411989212036133,0.0,15,visualization/output/clustered_location_14_routes.json
+clustered_location_14,Nearest Neighbor,94.277,9.703636169433594e-05,5.963740994256535,15,visualization/output/clustered_location_14_routes.json
+clustered_location_14,RL Solver,94.128,0.008372068405151367,5.796270694945523,15,visualization/output/clustered_location_14_routes.json
 ,,,,,,
-sparse_location_1,Branch & Bound,129.0022906865855,0.010303020477294922,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_1_routes.json
-sparse_location_1,Held-Karp (DP),129.0022906865855,0.011137962341308594,0.0,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_1_routes.json
-sparse_location_1,Nearest Neighbor,149.9292906865855,7.510185241699219e-05,16.222192558458282,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_1_routes.json
-sparse_location_1,RL Solver,157.65570884064635,0.006818056106567383,22.21155764099965,10,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_1_routes.json
+clustered_location_15,Branch & Bound,31.071999999999996,4.678540945053101,0.0,15,visualization/output/clustered_location_15_routes.json
+clustered_location_15,Held-Karp (DP),31.071999999999996,0.23882174491882324,0.0,15,visualization/output/clustered_location_15_routes.json
+clustered_location_15,Nearest Neighbor,36.854000000000006,9.298324584960938e-05,18.608393408856884,15,visualization/output/clustered_location_15_routes.json
+clustered_location_15,RL Solver,37.614000000000004,0.009949922561645508,21.05432543769313,15,visualization/output/clustered_location_15_routes.json
 ,,,,,,
-sparse_location_2,Branch & Bound,147.33166836202892,2.5903470516204834,0.0,15,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_2_routes.json
-sparse_location_2,Held-Karp (DP),147.33166836202892,0.27221012115478516,0.0,15,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_2_routes.json
-sparse_location_2,Nearest Neighbor,176.8609873321658,0.00011491775512695312,20.042750685193027,15,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_2_routes.json
-sparse_location_2,RL Solver,167.26098733216577,0.010531902313232422,13.526839946701596,15,/Users/weehungchiam/Documents/NUS_Y4/CS3263/Project/visualization/output/sparse_location_2_routes.json
+clustered_location_16,Branch & Bound,46.961,4.460263013839722,0.0,15,visualization/output/clustered_location_16_routes.json
+clustered_location_16,Held-Karp (DP),46.961,0.24462175369262695,0.0,15,visualization/output/clustered_location_16_routes.json
+clustered_location_16,Nearest Neighbor,51.028000000000006,9.012222290039062e-05,8.660377760269174,15,visualization/output/clustered_location_16_routes.json
+clustered_location_16,RL Solver,51.21500000000001,0.010657072067260742,9.05858052426484,15,visualization/output/clustered_location_16_routes.json
+,,,,,,
+clustered_location_17,Branch & Bound,68.00399999999999,18.180469036102295,0.0,15,visualization/output/clustered_location_17_routes.json
+clustered_location_17,Held-Karp (DP),68.00399999999999,0.2614450454711914,0.0,15,visualization/output/clustered_location_17_routes.json
+clustered_location_17,Nearest Neighbor,71.819,8.392333984375e-05,5.609964119757679,15,visualization/output/clustered_location_17_routes.json
+clustered_location_17,RL Solver,73.753,0.01104283332824707,8.453914475619097,15,visualization/output/clustered_location_17_routes.json
+,,,,,,
+clustered_location_18,Branch & Bound,16.715,5.118940114974976,0.0,15,visualization/output/clustered_location_18_routes.json
+clustered_location_18,Held-Karp (DP),16.715,0.24594521522521973,0.0,15,visualization/output/clustered_location_18_routes.json
+clustered_location_18,Nearest Neighbor,18.435,9.703636169433594e-05,10.290158540233318,15,visualization/output/clustered_location_18_routes.json
+clustered_location_18,RL Solver,21.557999999999996,0.006237030029296875,28.973975471133688,15,visualization/output/clustered_location_18_routes.json
+,,,,,,
+clustered_location_19,Branch & Bound,52.92099999999999,0.35444211959838867,0.0,15,visualization/output/clustered_location_19_routes.json
+clustered_location_19,Held-Karp (DP),52.92099999999999,0.25665831565856934,0.0,15,visualization/output/clustered_location_19_routes.json
+clustered_location_19,Nearest Neighbor,63.08899999999999,3.123283386230469e-05,19.21354471759793,15,visualization/output/clustered_location_19_routes.json
+clustered_location_19,RL Solver,91.174,0.008961677551269531,72.2832146028987,15,visualization/output/clustered_location_19_routes.json
+,,,,,,
+clustered_location_2,Branch & Bound,11.682,0.013000011444091797,0.0,10,visualization/output/clustered_location_2_routes.json
+clustered_location_2,Held-Karp (DP),11.682,0.00404810905456543,0.0,10,visualization/output/clustered_location_2_routes.json
+clustered_location_2,Nearest Neighbor,11.682,4.792213439941406e-05,0.0,10,visualization/output/clustered_location_2_routes.json
+clustered_location_2,RL Solver,13.006000000000002,0.0065898895263671875,11.333675740455416,10,visualization/output/clustered_location_2_routes.json
+,,,,,,
+clustered_location_20,Branch & Bound,70.092,1.1353108882904053,0.0,15,visualization/output/clustered_location_20_routes.json
+clustered_location_20,Held-Karp (DP),70.092,0.2704181671142578,0.0,15,visualization/output/clustered_location_20_routes.json
+clustered_location_20,Nearest Neighbor,83.167,9.489059448242188e-05,18.654054671003827,15,visualization/output/clustered_location_20_routes.json
+clustered_location_20,RL Solver,88.79500000000002,0.011141061782836914,26.68350168350171,15,visualization/output/clustered_location_20_routes.json
+,,,,,,
+clustered_location_3,Branch & Bound,4.894,0.0042989253997802734,0.0,10,visualization/output/clustered_location_3_routes.json
+clustered_location_3,Held-Karp (DP),4.894,0.010982275009155273,0.0,10,visualization/output/clustered_location_3_routes.json
+clustered_location_3,Nearest Neighbor,5.77,7.82012939453125e-05,17.89946873722925,10,visualization/output/clustered_location_3_routes.json
+clustered_location_3,RL Solver,5.372,0.012552976608276367,9.767061708214134,10,visualization/output/clustered_location_3_routes.json
+,,,,,,
+clustered_location_4,Branch & Bound,21.673000000000002,0.030091047286987305,0.0,10,visualization/output/clustered_location_4_routes.json
+clustered_location_4,Held-Karp (DP),21.673000000000002,0.010440826416015625,0.0,10,visualization/output/clustered_location_4_routes.json
+clustered_location_4,Nearest Neighbor,26.043000000000003,6.580352783203125e-05,20.163336870760855,10,visualization/output/clustered_location_4_routes.json
+clustered_location_4,RL Solver,27.722000000000005,0.0026581287384033203,27.91030314215846,10,visualization/output/clustered_location_4_routes.json
+,,,,,,
+clustered_location_6,Branch & Bound,58.199,0.027718067169189453,0.0,10,visualization/output/clustered_location_6_routes.json
+clustered_location_6,Held-Karp (DP),58.199,0.010404825210571289,0.0,10,visualization/output/clustered_location_6_routes.json
+clustered_location_6,Nearest Neighbor,59.104,7.390975952148438e-05,1.5550095362463292,10,visualization/output/clustered_location_6_routes.json
+clustered_location_6,RL Solver,65.303,0.002479076385498047,12.206395298888296,10,visualization/output/clustered_location_6_routes.json
+,,,,,,
+clustered_location_7,Branch & Bound,15.188,0.03585028648376465,0.0,10,visualization/output/clustered_location_7_routes.json
+clustered_location_7,Held-Karp (DP),15.188,0.010416984558105469,0.0,10,visualization/output/clustered_location_7_routes.json
+clustered_location_7,Nearest Neighbor,18.209000000000003,6.29425048828125e-05,19.89070318672638,10,visualization/output/clustered_location_7_routes.json
+clustered_location_7,RL Solver,19.216,0.009182929992675781,26.52093758230182,10,visualization/output/clustered_location_7_routes.json
+,,,,,,
+clustered_location_8,Branch & Bound,11.54,0.015228986740112305,0.0,10,visualization/output/clustered_location_8_routes.json
+clustered_location_8,Held-Karp (DP),11.54,0.008424997329711914,0.0,10,visualization/output/clustered_location_8_routes.json
+clustered_location_8,Nearest Neighbor,14.079,9.703636169433594e-05,22.001733102253045,10,visualization/output/clustered_location_8_routes.json
+clustered_location_8,RL Solver,13.956000000000001,0.0074999332427978516,20.935875216637804,10,visualization/output/clustered_location_8_routes.json
+,,,,,,
+clustered_location_9,Branch & Bound,36.158,0.056862831115722656,0.0,10,visualization/output/clustered_location_9_routes.json
+clustered_location_9,Held-Karp (DP),36.158,0.005413055419921875,0.0,10,visualization/output/clustered_location_9_routes.json
+clustered_location_9,Nearest Neighbor,37.381,5.412101745605469e-05,3.3823773438796363,10,visualization/output/clustered_location_9_routes.json
+clustered_location_9,RL Solver,39.111000000000004,0.0027468204498291016,8.166934011836947,10,visualization/output/clustered_location_9_routes.json
+,,,,,,
+dense_location_1,Branch & Bound,4.287,0.008400201797485352,2.0717947742013655e-14,10,visualization/output/dense_location_1_routes.json
+dense_location_1,Held-Karp (DP),4.286999999999999,0.010133981704711914,0.0,10,visualization/output/dense_location_1_routes.json
+dense_location_1,Nearest Neighbor,5.273,2.5987625122070312e-05,22.999766736645693,10,visualization/output/dense_location_1_routes.json
+dense_location_1,RL Solver,5.464,0.006135225296020508,27.455096804292083,10,visualization/output/dense_location_1_routes.json
+,,,,,,
+dense_location_10,Branch & Bound,8.56,0.0687570571899414,0.0,10,visualization/output/dense_location_10_routes.json
+dense_location_10,Held-Karp (DP),8.56,0.0041463375091552734,0.0,10,visualization/output/dense_location_10_routes.json
+dense_location_10,Nearest Neighbor,9.359,6.413459777832031e-05,9.334112149532704,10,visualization/output/dense_location_10_routes.json
+dense_location_10,RL Solver,9.119,0.0060350894927978516,6.530373831775692,10,visualization/output/dense_location_10_routes.json
+,,,,,,
+dense_location_11,Branch & Bound,7.961,14.438567161560059,0.0,15,visualization/output/dense_location_11_routes.json
+dense_location_11,Held-Karp (DP),7.961,0.262310266494751,0.0,15,visualization/output/dense_location_11_routes.json
+dense_location_11,Nearest Neighbor,9.672,9.298324584960938e-05,21.492274839844246,15,visualization/output/dense_location_11_routes.json
+dense_location_11,RL Solver,11.92,0.009608983993530273,49.729933425449055,15,visualization/output/dense_location_11_routes.json
+,,,,,,
+dense_location_12,Branch & Bound,16.410999999999998,8.976213932037354,0.0,15,visualization/output/dense_location_12_routes.json
+dense_location_12,Held-Karp (DP),16.410999999999998,0.2620220184326172,0.0,15,visualization/output/dense_location_12_routes.json
+dense_location_12,Nearest Neighbor,18.001999999999995,7.081031799316406e-05,9.694716958137821,15,visualization/output/dense_location_12_routes.json
+dense_location_12,RL Solver,19.31,0.012788057327270508,17.664980805557256,15,visualization/output/dense_location_12_routes.json
+,,,,,,
+dense_location_13,Branch & Bound,21.837,369.7152202129364,0.0,15,visualization/output/dense_location_13_routes.json
+dense_location_13,Held-Karp (DP),21.837,0.25460290908813477,0.0,15,visualization/output/dense_location_13_routes.json
+dense_location_13,Nearest Neighbor,23.915,8.893013000488281e-05,9.515959151898151,15,visualization/output/dense_location_13_routes.json
+dense_location_13,RL Solver,24.276,0.011234760284423828,11.169116636900673,15,visualization/output/dense_location_13_routes.json
+,,,,,,
+dense_location_14,Branch & Bound,13.015,13.136845827102661,0.0,15,visualization/output/dense_location_14_routes.json
+dense_location_14,Held-Karp (DP),13.015,0.2674682140350342,0.0,15,visualization/output/dense_location_14_routes.json
+dense_location_14,Nearest Neighbor,16.995,0.0003788471221923828,30.580099884748368,15,visualization/output/dense_location_14_routes.json
+dense_location_14,RL Solver,17.302000000000003,0.011371135711669922,32.938916634652344,15,visualization/output/dense_location_14_routes.json
+,,,,,,
+dense_location_15,Branch & Bound,14.582999999999998,12.109794855117798,0.0,15,visualization/output/dense_location_15_routes.json
+dense_location_15,Held-Karp (DP),14.582999999999998,0.2588331699371338,0.0,15,visualization/output/dense_location_15_routes.json
+dense_location_15,Nearest Neighbor,16.997,0.0001068115234375,16.55352122334226,15,visualization/output/dense_location_15_routes.json
+dense_location_15,RL Solver,15.911999999999999,0.003970146179199219,9.113351162312288,15,visualization/output/dense_location_15_routes.json
+,,,,,,
+dense_location_16,Branch & Bound,13.58,14.923671007156372,0.0,15,visualization/output/dense_location_16_routes.json
+dense_location_16,Held-Karp (DP),13.58,0.25409793853759766,0.0,15,visualization/output/dense_location_16_routes.json
+dense_location_16,Nearest Neighbor,16.894000000000002,8.487701416015625e-05,24.40353460972019,15,visualization/output/dense_location_16_routes.json
+dense_location_16,RL Solver,17.879,0.00897979736328125,31.65684830633285,15,visualization/output/dense_location_16_routes.json
+,,,,,,
+dense_location_17,Branch & Bound,12.363999999999999,19.544310092926025,0.0,15,visualization/output/dense_location_17_routes.json
+dense_location_17,Held-Karp (DP),12.363999999999999,0.2601289749145508,0.0,15,visualization/output/dense_location_17_routes.json
+dense_location_17,Nearest Neighbor,15.431999999999999,9.512901306152344e-05,24.813976059527658,15,visualization/output/dense_location_17_routes.json
+dense_location_17,RL Solver,15.25,0.007005929946899414,23.34196053057264,15,visualization/output/dense_location_17_routes.json
+,,,,,,
+dense_location_18,Branch & Bound,11.734000000000002,0.7074480056762695,0.0,15,visualization/output/dense_location_18_routes.json
+dense_location_18,Held-Karp (DP),11.734000000000002,0.272968053817749,0.0,15,visualization/output/dense_location_18_routes.json
+dense_location_18,Nearest Neighbor,13.755000000000003,9.298324584960938e-05,17.223453212885637,15,visualization/output/dense_location_18_routes.json
+dense_location_18,RL Solver,13.36,0.00828695297241211,13.857167206408704,15,visualization/output/dense_location_18_routes.json
+,,,,,,
+dense_location_19,Branch & Bound,15.112,3.064495086669922,0.0,15,visualization/output/dense_location_19_routes.json
+dense_location_19,Held-Karp (DP),15.112,0.2601151466369629,0.0,15,visualization/output/dense_location_19_routes.json
+dense_location_19,Nearest Neighbor,18.161,9.489059448242188e-05,20.176019057702497,15,visualization/output/dense_location_19_routes.json
+dense_location_19,RL Solver,23.571,0.012555837631225586,55.97538380095289,15,visualization/output/dense_location_19_routes.json
+,,,,,,
+dense_location_2,Branch & Bound,17.965999999999998,0.39173293113708496,0.0,10,visualization/output/dense_location_2_routes.json
+dense_location_2,Held-Karp (DP),17.965999999999998,0.0069370269775390625,0.0,10,visualization/output/dense_location_2_routes.json
+dense_location_2,Nearest Neighbor,20.911,5.602836608886719e-05,16.392073917399554,10,visualization/output/dense_location_2_routes.json
+dense_location_2,RL Solver,20.755,0.002630949020385742,15.52376711566293,10,visualization/output/dense_location_2_routes.json
+,,,,,,
+dense_location_20,Branch & Bound,15.176,13.309316158294678,0.0,15,visualization/output/dense_location_20_routes.json
+dense_location_20,Held-Karp (DP),15.176,0.26032090187072754,0.0,15,visualization/output/dense_location_20_routes.json
+dense_location_20,Nearest Neighbor,18.833,8.606910705566406e-05,24.097258829731143,15,visualization/output/dense_location_20_routes.json
+dense_location_20,RL Solver,19.786,0.009131193161010742,30.37691091196627,15,visualization/output/dense_location_20_routes.json
+,,,,,,
+dense_location_3,Branch & Bound,4.462,0.023745059967041016,0.0,10,visualization/output/dense_location_3_routes.json
+dense_location_3,Held-Karp (DP),4.462,0.004347801208496094,0.0,10,visualization/output/dense_location_3_routes.json
+dense_location_3,Nearest Neighbor,4.463,0.00017786026000976562,0.022411474675041104,10,visualization/output/dense_location_3_routes.json
+dense_location_3,RL Solver,6.961000000000001,0.006853818893432617,56.00627521290904,10,visualization/output/dense_location_3_routes.json
+,,,,,,
+dense_location_4,Branch & Bound,6.669,0.08974814414978027,0.0,10,visualization/output/dense_location_4_routes.json
+dense_location_4,Held-Karp (DP),6.669,0.0046160221099853516,0.0,10,visualization/output/dense_location_4_routes.json
+dense_location_4,Nearest Neighbor,7.4239999999999995,7.915496826171875e-05,11.321037636827109,10,visualization/output/dense_location_4_routes.json
+dense_location_4,RL Solver,7.306,0.00872492790222168,9.551656920077981,10,visualization/output/dense_location_4_routes.json
+,,,,,,
+dense_location_5,Branch & Bound,5.316,0.05361795425415039,0.0,10,visualization/output/dense_location_5_routes.json
+dense_location_5,Held-Karp (DP),5.316,0.012833118438720703,0.0,10,visualization/output/dense_location_5_routes.json
+dense_location_5,Nearest Neighbor,6.065,7.796287536621094e-05,14.08954100827691,10,visualization/output/dense_location_5_routes.json
+dense_location_5,RL Solver,8.96,0.008792877197265625,68.54778028592929,10,visualization/output/dense_location_5_routes.json
+,,,,,,
+dense_location_6,Branch & Bound,8.328000000000001,0.07231473922729492,0.0,10,visualization/output/dense_location_6_routes.json
+dense_location_6,Held-Karp (DP),8.328000000000001,0.011665821075439453,0.0,10,visualization/output/dense_location_6_routes.json
+dense_location_6,Nearest Neighbor,10.995000000000001,0.00014901161193847656,32.024495677233425,10,visualization/output/dense_location_6_routes.json
+dense_location_6,RL Solver,9.841000000000001,0.006658077239990234,18.16762728146013,10,visualization/output/dense_location_6_routes.json
+,,,,,,
+dense_location_7,Branch & Bound,13.406999999999998,0.02547907829284668,0.0,10,visualization/output/dense_location_7_routes.json
+dense_location_7,Held-Karp (DP),13.406999999999998,0.011608123779296875,0.0,10,visualization/output/dense_location_7_routes.json
+dense_location_7,Nearest Neighbor,16.883,3.910064697265625e-05,25.92675468039085,10,visualization/output/dense_location_7_routes.json
+dense_location_7,RL Solver,15.834999999999999,0.008454084396362305,18.10994256731559,10,visualization/output/dense_location_7_routes.json
+,,,,,,
+dense_location_8,Branch & Bound,19.584000000000003,0.0742950439453125,0.0,10,visualization/output/dense_location_8_routes.json
+dense_location_8,Held-Karp (DP),19.584000000000003,0.004183053970336914,0.0,10,visualization/output/dense_location_8_routes.json
+dense_location_8,Nearest Neighbor,21.685000000000002,5.817413330078125e-05,10.728145424836596,10,visualization/output/dense_location_8_routes.json
+dense_location_8,RL Solver,23.1,0.0023300647735595703,17.95343137254901,10,visualization/output/dense_location_8_routes.json
+,,,,,,
+dense_location_9,Branch & Bound,7.616,0.016744136810302734,0.0,10,visualization/output/dense_location_9_routes.json
+dense_location_9,Held-Karp (DP),7.616,0.011731863021850586,0.0,10,visualization/output/dense_location_9_routes.json
+dense_location_9,Nearest Neighbor,8.546,2.5987625122070312e-05,12.21113445378151,10,visualization/output/dense_location_9_routes.json
+dense_location_9,RL Solver,7.697000000000001,0.004996061325073242,1.0635504201680843,10,visualization/output/dense_location_9_routes.json
+,,,,,,
+sparse_location_1,Branch & Bound,113.851,0.023154258728027344,0.0,10,visualization/output/sparse_location_1_routes.json
+sparse_location_1,Held-Karp (DP),113.851,0.00801396369934082,0.0,10,visualization/output/sparse_location_1_routes.json
+sparse_location_1,Nearest Neighbor,122.391,2.3126602172851562e-05,7.5010320506627135,10,visualization/output/sparse_location_1_routes.json
+sparse_location_1,RL Solver,132.29899999999998,0.008957862854003906,16.203634575014693,10,visualization/output/sparse_location_1_routes.json
+,,,,,,
+sparse_location_10,Branch & Bound,325.00899999999996,0.3118748664855957,0.0,10,visualization/output/sparse_location_10_routes.json
+sparse_location_10,Held-Karp (DP),325.00899999999996,0.009268045425415039,0.0,10,visualization/output/sparse_location_10_routes.json
+sparse_location_10,Nearest Neighbor,364.606,7.176399230957031e-05,12.183354922479083,10,visualization/output/sparse_location_10_routes.json
+sparse_location_10,RL Solver,366.761,0.008816957473754883,12.846413483934313,10,visualization/output/sparse_location_10_routes.json
+,,,,,,
+sparse_location_11,Branch & Bound,19.054000000000002,3.0430312156677246,0.0,15,visualization/output/sparse_location_11_routes.json
+sparse_location_11,Held-Karp (DP),19.054000000000002,0.25820422172546387,0.0,15,visualization/output/sparse_location_11_routes.json
+sparse_location_11,Nearest Neighbor,25.089000000000002,5.984306335449219e-05,31.67313949826808,15,visualization/output/sparse_location_11_routes.json
+sparse_location_11,RL Solver,26.183,0.009083986282348633,37.41471607011649,15,visualization/output/sparse_location_11_routes.json
+,,,,,,
+sparse_location_12,Branch & Bound,53.282999999999994,21.766777753829956,0.0,15,visualization/output/sparse_location_12_routes.json
+sparse_location_12,Held-Karp (DP),53.282999999999994,0.26598286628723145,0.0,15,visualization/output/sparse_location_12_routes.json
+sparse_location_12,Nearest Neighbor,58.175,8.296966552734375e-05,9.181164724208477,15,visualization/output/sparse_location_12_routes.json
+sparse_location_12,RL Solver,68.787,0.008755922317504883,29.09746072856261,15,visualization/output/sparse_location_12_routes.json
+,,,,,,
+sparse_location_13,Branch & Bound,73.13467697323672,71.74417805671692,0.0,15,visualization/output/sparse_location_13_routes.json
+sparse_location_13,Held-Karp (DP),73.13467697323672,0.26032209396362305,0.0,15,visualization/output/sparse_location_13_routes.json
+sparse_location_13,Nearest Neighbor,96.753087636008,9.298324584960938e-05,32.29440757824681,15,visualization/output/sparse_location_13_routes.json
+sparse_location_13,RL Solver,89.0653879664005,0.0041239261627197266,21.78270507572425,15,visualization/output/sparse_location_13_routes.json
+,,,,,,
+sparse_location_14,Branch & Bound,79.37100000000001,3.4349617958068848,0.0,15,visualization/output/sparse_location_14_routes.json
+sparse_location_14,Held-Karp (DP),79.37100000000001,0.2557377815246582,0.0,15,visualization/output/sparse_location_14_routes.json
+sparse_location_14,Nearest Neighbor,87.251,8.392333984375e-05,9.928059366771231,15,visualization/output/sparse_location_14_routes.json
+sparse_location_14,RL Solver,80.782,0.006134033203125,1.777727381537321,15,visualization/output/sparse_location_14_routes.json
+,,,,,,
+sparse_location_15,Branch & Bound,107.94399999999999,17.49700140953064,0.0,15,visualization/output/sparse_location_15_routes.json
+sparse_location_15,Held-Karp (DP),107.94399999999999,0.2512478828430176,0.0,15,visualization/output/sparse_location_15_routes.json
+sparse_location_15,Nearest Neighbor,111.256,7.510185241699219e-05,3.0682576150596717,15,visualization/output/sparse_location_15_routes.json
+sparse_location_15,RL Solver,118.53699999999999,0.009276151657104492,9.813421774253321,15,visualization/output/sparse_location_15_routes.json
+,,,,,,
+sparse_location_16,Branch & Bound,64.528,411.47092485427856,0.0,15,visualization/output/sparse_location_16_routes.json
+sparse_location_16,Held-Karp (DP),64.528,0.25917792320251465,0.0,15,visualization/output/sparse_location_16_routes.json
+sparse_location_16,Nearest Neighbor,77.679,6.818771362304688e-05,20.38030002479543,15,visualization/output/sparse_location_16_routes.json
+sparse_location_16,RL Solver,78.83000000000001,0.0067501068115234375,22.16402181998513,15,visualization/output/sparse_location_16_routes.json
+,,,,,,
+sparse_location_17,Branch & Bound,21.282999999999994,3.6139590740203857,0.0,15,visualization/output/sparse_location_17_routes.json
+sparse_location_17,Held-Karp (DP),21.282999999999994,0.2581009864807129,0.0,15,visualization/output/sparse_location_17_routes.json
+sparse_location_17,Nearest Neighbor,25.958,5.1975250244140625e-05,21.96588826763147,15,visualization/output/sparse_location_17_routes.json
+sparse_location_17,RL Solver,29.69,0.009132146835327148,39.501010195931066,15,visualization/output/sparse_location_17_routes.json
+,,,,,,
+sparse_location_18,Branch & Bound,129.27200000000002,2314.78560090065,0.0,15,visualization/output/sparse_location_18_routes.json
+sparse_location_18,Held-Karp (DP),129.27200000000002,0.2700810432434082,0.0,15,visualization/output/sparse_location_18_routes.json
+sparse_location_18,Nearest Neighbor,161.265,6.413459777832031e-05,24.748592115848723,15,visualization/output/sparse_location_18_routes.json
+sparse_location_18,RL Solver,158.437,0.009715080261230469,22.56095674237266,15,visualization/output/sparse_location_18_routes.json
+,,,,,,
+sparse_location_19,Branch & Bound,75.903,1618.2818610668182,0.0,15,visualization/output/sparse_location_19_routes.json
+sparse_location_19,Held-Karp (DP),75.903,0.25025033950805664,0.0,15,visualization/output/sparse_location_19_routes.json
+sparse_location_19,Nearest Neighbor,96.13,5.7220458984375e-05,26.648485567105368,15,visualization/output/sparse_location_19_routes.json
+sparse_location_19,RL Solver,84.444,0.010345935821533203,11.252519663254413,15,visualization/output/sparse_location_19_routes.json
+,,,,,,
+sparse_location_2,Branch & Bound,105.50371737553616,0.013025999069213867,0.0,10,visualization/output/sparse_location_2_routes.json
+sparse_location_2,Held-Karp (DP),105.50371737553616,0.011101007461547852,0.0,10,visualization/output/sparse_location_2_routes.json
+sparse_location_2,Nearest Neighbor,120.72181550455869,6.413459777832031e-05,14.424229313981742,10,visualization/output/sparse_location_2_routes.json
+sparse_location_2,RL Solver,121.06088310963352,0.006826877593994141,14.745609084770232,10,visualization/output/sparse_location_2_routes.json
+,,,,,,
+sparse_location_20,Branch & Bound,71.691,100.2989809513092,0.0,15,visualization/output/sparse_location_20_routes.json
+sparse_location_20,Held-Karp (DP),71.691,0.24265003204345703,0.0,15,visualization/output/sparse_location_20_routes.json
+sparse_location_20,Nearest Neighbor,78.794,7.128715515136719e-05,9.907798747402037,15,visualization/output/sparse_location_20_routes.json
+sparse_location_20,RL Solver,85.866,0.009046077728271484,19.77235636272335,15,visualization/output/sparse_location_20_routes.json
+,,,,,,
+sparse_location_3,Branch & Bound,37.331,0.01953291893005371,0.0,10,visualization/output/sparse_location_3_routes.json
+sparse_location_3,Held-Karp (DP),37.331,0.0037660598754882812,0.0,10,visualization/output/sparse_location_3_routes.json
+sparse_location_3,Nearest Neighbor,44.762,6.29425048828125e-05,19.90570839248881,10,visualization/output/sparse_location_3_routes.json
+sparse_location_3,RL Solver,42.374,0.0052700042724609375,13.508880019286917,10,visualization/output/sparse_location_3_routes.json
+,,,,,,
+sparse_location_4,Branch & Bound,99.88986789492279,0.020287036895751953,0.0,10,visualization/output/sparse_location_4_routes.json
+sparse_location_4,Held-Karp (DP),99.88986789492279,0.003885030746459961,0.0,10,visualization/output/sparse_location_4_routes.json
+sparse_location_4,Nearest Neighbor,105.29325566077819,4.982948303222656e-05,5.4093451915857855,10,visualization/output/sparse_location_4_routes.json
+sparse_location_4,RL Solver,107.47986789492279,0.0025310516357421875,7.598368242897424,10,visualization/output/sparse_location_4_routes.json
+,,,,,,
+sparse_location_5,Branch & Bound,162.61700000000002,0.024061918258666992,0.0,10,visualization/output/sparse_location_5_routes.json
+sparse_location_5,Held-Karp (DP),162.61700000000002,0.004415035247802734,0.0,10,visualization/output/sparse_location_5_routes.json
+sparse_location_5,Nearest Neighbor,163.273,5.888938903808594e-05,0.4034018583542787,10,visualization/output/sparse_location_5_routes.json
+sparse_location_5,RL Solver,163.27400000000003,0.005986928939819336,0.4040168002115465,10,visualization/output/sparse_location_5_routes.json
+,,,,,,
+sparse_location_6,Branch & Bound,112.94500000000001,0.021922826766967773,0.0,10,visualization/output/sparse_location_6_routes.json
+sparse_location_6,Held-Karp (DP),112.94500000000001,0.003468036651611328,0.0,10,visualization/output/sparse_location_6_routes.json
+sparse_location_6,Nearest Neighbor,123.324,5.0067901611328125e-05,9.189428482889893,10,visualization/output/sparse_location_6_routes.json
+sparse_location_6,RL Solver,131.383,0.004770040512084961,16.324759838859624,10,visualization/output/sparse_location_6_routes.json
+,,,,,,
+sparse_location_7,Branch & Bound,94.05635029616137,0.016415119171142578,0.0,10,visualization/output/sparse_location_7_routes.json
+sparse_location_7,Held-Karp (DP),94.05635029616137,0.00916910171508789,0.0,10,visualization/output/sparse_location_7_routes.json
+sparse_location_7,Nearest Neighbor,106.92887092848332,0.0001537799835205078,13.68596654217329,10,visualization/output/sparse_location_7_routes.json
+sparse_location_7,RL Solver,108.22398724290474,0.0063517093658447266,15.062924408753698,10,visualization/output/sparse_location_7_routes.json
+,,,,,,
+sparse_location_8,Branch & Bound,119.83600000000001,0.015455007553100586,0.0,10,visualization/output/sparse_location_8_routes.json
+sparse_location_8,Held-Karp (DP),119.83600000000001,0.003545999526977539,0.0,10,visualization/output/sparse_location_8_routes.json
+sparse_location_8,Nearest Neighbor,134.93200000000002,5.507469177246094e-05,12.597216195467139,10,visualization/output/sparse_location_8_routes.json
+sparse_location_8,RL Solver,125.48700000000001,0.00598597526550293,4.715611335491835,10,visualization/output/sparse_location_8_routes.json
+,,,,,,
+sparse_location_9,Branch & Bound,142.20397015580164,0.01983785629272461,0.0,10,visualization/output/sparse_location_9_routes.json
+sparse_location_9,Held-Karp (DP),142.20397015580164,0.011068105697631836,0.0,10,visualization/output/sparse_location_9_routes.json
+sparse_location_9,Nearest Neighbor,148.16037124991513,2.5033950805664062e-05,4.188632066733109,10,visualization/output/sparse_location_9_routes.json
+sparse_location_9,RL Solver,168.30515713710602,0.0048980712890625,18.354752650511358,10,visualization/output/sparse_location_9_routes.json
 ,,,,,,
